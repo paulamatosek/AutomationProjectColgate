@@ -60,6 +60,7 @@ asVendorDic= {
 
 dataDic= {
     'PL79': 'PL20',
+    'PL78': 'PL20',
     'CZ99': 'PL50',
     'HU99': 'PL50',
     'PL99': 'PL50',
@@ -104,6 +105,16 @@ languagesDic = {
     'PT99' : ['Portuguese'],
     'ES99' : ['Spanish'],
     'GB99' : ['English_ZA']
+}
+
+InnovationDic={
+'NO' : ['NO - Base Business'],
+'H1' : ['H1 - Core Innovation'],
+'H1R' : ['H1R - Core Relaunch'],
+'H2' : ['H2 - Novel'],
+'H3' : ['H3 - Breakthrough'],
+'GEO' : ['GEO - Geographic Expansion']
+
 }
 
 sapUrl = 'http://appportal.win.colpal.com/irj/portal?NavigationTarget=navurl://551876c535632da41f46ac6ddd9ccb22'
@@ -164,15 +175,17 @@ MDG = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "ta
 MDG.click()
 time.sleep(5)
 
-materialRequests = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "L2N5")))
+materialRequests = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "L2N6")))
 materialRequests.click()
 time.sleep(5)
 
-processMaterial = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "5L3N0")))
+
+
+processMaterial = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "6L3N0")))
 processMaterial.click()
 time.sleep(5)
 
-SKUCreate = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "50L4N0")))
+SKUCreate = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "60L4N0")))
 SKUCreate.click()
 
 time.sleep(2)
@@ -209,14 +222,18 @@ time.sleep(3)
 
 #SUBSIDIARY
 
-subsidiaryInput = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, '//span[@title="" and @name="WD0104" and @class="lsField__input"]')))
+subsidiaryInput = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, '/html/body/table/tbody/tr/td/div/div[1]/table/tbody/tr[2]/td/table/tbody/tr/td/div/div[1]/table/tbody/tr[4]/td/div/table/tbody/tr/td/table/tbody/tr[2]/td/div/table/tbody/tr/td/div/table/tbody[1]/tr[2]/td[2]/div/div[2]/table/tbody/tr/td[1]/div/span/span')))
 subsidiaryInput.click()
 
-subsidiaryInput = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, '//input[@title="" and @name="WD0104" and @class="lsField__input"]')))
+subsidiaryInput = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, '/html/body/table/tbody/tr/td/div/div[1]/table/tbody/tr[2]/td/table/tbody/tr/td/div/div[1]/table/tbody/tr[4]/td/div/table/tbody/tr/td/table/tbody/tr[2]/td/div/table/tbody/tr/td/div/table/tbody[1]/tr[2]/td[2]/div/div[2]/table/tbody/tr/td[1]/div/span/input')))
 subsidiaryInput.send_keys('EP')
+
 assignButton = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, '/html/body/table/tbody/tr/td/div/div[1]/table/tbody/tr[2]/td/table/tbody/tr/td/div/div[1]/table/tbody/tr[4]/td/div/table/tbody/tr/td/table/tbody/tr[2]/td/div/table/tbody/tr/td/div/table/thead/tr/th/table/tbody/tr/td/span[1]/div')))
 assignButton.click()
 time.sleep(2)
+
+
+
 
 #SOURCING TYPE
 sourcingTypeInput = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, '//input[@title="Sourcing Type" and @class="lsField__input"]')))
@@ -279,6 +296,23 @@ for i, salesOrgValue in enumerate(salesOrgValues):
     SKUType.send_keys(SKUTypeDic[str(templateData['Type']).lower()])
     time.sleep(2)
 
+    Innovation = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH,
+                                                                                 '/ html / body / table / tbody / tr / td / div / div[1] / table / tbody / tr[2] / td / table / tbody / tr / td / div / div[1] / table / tbody / tr[5] / td / div / table / tbody / tr / td / table / tbody / tr[2] / td / div / div / table / tbody / tr[2] / td / table / tbody / tr[3] / td / div[2] / div / div / table / tbody / tr[2] / td / table / tbody / tr[4] / td[3] / table / tbody / tr / td[1] / input')))
+    Innovation.click()
+    Innovation.send_keys('NO - Base Business')
+    time.sleep(2)
+
+    # if InnovationValue != '':
+    #
+    #     Innovation = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH,
+    #                                                                                  '/ html / body / table / tbody / tr / td / div / div[1] / table / tbody / tr[2] / td / table / tbody / tr / td / div / div[1] / table / tbody / tr[5] / td / div / table / tbody / tr / td / table / tbody / tr[2] / td / div / div / table / tbody / tr[2] / td / table / tbody / tr[3] / td / div[2] / div / div / table / tbody / tr[2] / td / table / tbody / tr[4] / td[3] / table / tbody / tr / td[1] / input')))
+    #     Innovation.click()
+    #     InnovationValue = str(templateData['Innovation']).lower()
+    #     Innovation.send_keys(InnovationDic[str(templateData['Innovation']).lower()])
+    #     time.sleep(2)
+
+
+
     materialGroup1 = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH,
                                                                                      '/html/body/table/tbody/tr/td/div/div[1]/table/tbody/tr[2]/td/table/tbody/tr/td/div/div[1]/table/tbody/tr[5]/td/div/table/tbody/tr/td/table/tbody/tr[2]/td/div/div/table/tbody/tr[2]/td/table/tbody/tr[3]/td/div[2]/div/div/table/tbody/tr[2]/td/table/tbody/tr[5]/td[2]/div/table/tbody/tr[2]/td[3]/table/tbody/tr/td[1]/input')))
     materialGroup1.click()
@@ -322,60 +356,88 @@ for i, salesOrgValue in enumerate(salesOrgValues):
     driver.switch_to.frame(isolatedWorkAreaFrame)
 
 #PLANT
-asVendorValues = str(asVendorDic[templateData['AsVendor']]).strip().split()
-uniquePlants = set()
 
+if  templateData["AsVendor"] != "PL20 - Sonoco" :
+    asVendor = driver.find_elements_by_class_name('lsTbsv5-ItemTitle')[2]
+    asVendor.click()
+    plantValue = str(asVendorDic[templateData['AsVendor']])
+    print(plantValue)
 
-if "PL20" in templateData["AsVendor"]:
+    addRow = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH,
+                                                                         '/html/body/table/tbody/tr/td/div/div[1]/table/tbody/tr[2]/td/table/tbody/tr/td/div/div[1]/table/tbody/tr[5]/td/div/table/tbody/tr/td/table/tbody/tr[2]/td/div/div/table/tbody/tr[2]/td/table/tbody/tr[3]/td/div[3]/div/div/table/tbody/tr[1]/td/table/tbody/tr/td/div/table/thead/tr/th/table/tbody/tr/td/span[1]/div')))
+    addRow.click()
+
+    asVendorInput = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH,
+                                                                                '/html/body/table/tbody/tr/td/div/div[1]/table/tbody/tr[2]/td/table/tbody/tr/td/div/div[1]/table/tbody/tr[5]/td/div/table/tbody/tr/td/table/tbody/tr[2]/td/div/div/table/tbody/tr[2]/td/table/tbody/tr[3]/td/div[3]/div/div/table/tbody/tr[1]/td/table/tbody/tr/td/div/table/tbody[1]/tr[2]/td[2]/div/div[2]/table/tbody/tr/td[1]/div/span/span ')))
+
+    asVendorInput.click()
+    asVendorInput = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH,
+                                                                                '/html/body/table/tbody/tr/td/div/div[1]/table/tbody/tr[2]/td/table/tbody/tr/td/div/div[1]/table/tbody/tr[5]/td/div/table/tbody/tr/td/table/tbody/tr[2]/td/div/div/table/tbody/tr[2]/td/table/tbody/tr[3]/td/div[3]/div/div/table/tbody/tr[1]/td/table/tbody/tr/td/div/table/tbody[1]/tr[2]/td[2]/div/div[2]/table/tbody/tr/td[1]/div/span/input')))
+    asVendorInput.click()
+
+    asVendorInput.send_keys(plantValue)
+    asVendorInput.send_keys(Keys.RETURN)
+    time.sleep(5)
+    countryOfOrigin = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH,
+                                                                                      '/html/body/table/tbody/tr/td/div/div[1]/table/tbody/tr[2]/td/table/tbody/tr/td/div/div[1]/table/tbody/tr[5]/td/div/table/tbody/tr/td/table/tbody/tr[2]/td/div/div/table/tbody/tr[2]/td/table/tbody/tr[3]/td/div[3]/div/div/table/tbody/tr[2]/td/table/tbody/tr[1]/td[3]/table/tbody/tr/td[1]/input')))
+    countryOfOrigin.click()
+    countryOfOrigin.click()
+    countryOfOriginValue = str(asVendorDic[templateData['AsVendor']])[:2]
+    countryOfOrigin.send_keys(countryOfOriginValue)
+    countryOfOrigin.send_keys(Keys.RETURN)
+
+else:
+    asVendorValues = str(asVendorDic[templateData['AsVendor']]).strip().split()
+    uniquePlants = set()
+
 
     for i, salesOrgValue in enumerate(salesOrgValues):
         uniquePlants.add(dataDic[salesOrgValue])
 
 
-asVendor= driver.find_elements_by_class_name('lsTbsv5-ItemTitle')[2]
-asVendor.click()
+    asVendor= driver.find_elements_by_class_name('lsTbsv5-ItemTitle')[2]
+    asVendor.click()
 
 
-for i, asVendorValue in enumerate(uniquePlants):
-    time.sleep(3)
-    addRow = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH,
-                                                                         '/html/body/table/tbody/tr/td/div/div[1]/table/tbody/tr[2]/td/table/tbody/tr/td/div/div[1]/table/tbody/tr[5]/td/div/table/tbody/tr/td/table/tbody/tr[2]/td/div/div/table/tbody/tr[2]/td/table/tbody/tr[3]/td/div[3]/div/div/table/tbody/tr[1]/td/table/tbody/tr/td/div/table/thead/tr/th/table/tbody/tr/td/span[1]/div')))
-    addRow.click()
+    for i, asVendorValue in enumerate(uniquePlants):
+        time.sleep(3)
+        addRow = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH,
+                                                                             '/html/body/table/tbody/tr/td/div/div[1]/table/tbody/tr[2]/td/table/tbody/tr/td/div/div[1]/table/tbody/tr[5]/td/div/table/tbody/tr/td/table/tbody/tr[2]/td/div/div/table/tbody/tr[2]/td/table/tbody/tr[3]/td/div[3]/div/div/table/tbody/tr[1]/td/table/tbody/tr/td/div/table/thead/tr/th/table/tbody/tr/td/span[1]/div')))
+        addRow.click()
 
-    url = None
-    if (i != 0):
-        url ='/html/body/table/tbody/tr/td/div/div[1]/table/tbody/tr[2]/td/table/tbody/tr/td/div/div[1]/table/tbody/tr[5]/td/div/table/tbody/tr/td/table/tbody/tr[2]/td/div/div/table/tbody/tr[2]/td/table/tbody/tr[3]/td/div[3]/div/div/table/tbody/tr[1]/td/table/tbody/tr/td/div/table/tbody[1]/tr[2]/td[2]/div/div[2]/table/tbody/tr[' + str(i + 1) + ']/td[1]/div/span/span'
-    else:
-        url ='/html/body/table/tbody/tr/td/div/div[1]/table/tbody/tr[2]/td/table/tbody/tr/td/div/div[1]/table/tbody/tr[5]/td/div/table/tbody/tr/td/table/tbody/tr[2]/td/div/div/table/tbody/tr[2]/td/table/tbody/tr[3]/td/div[3]/div/div/table/tbody/tr[1]/td/table/tbody/tr/td/div/table/tbody[1]/tr[2]/td[2]/div/div[2]/table/tbody/tr/td[1]/div/span/span'
-    asVendorInput = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, url)))
-    asVendorInput.click()
+        url = None
+        if (i != 0):
+            url ='/html/body/table/tbody/tr/td/div/div[1]/table/tbody/tr[2]/td/table/tbody/tr/td/div/div[1]/table/tbody/tr[5]/td/div/table/tbody/tr/td/table/tbody/tr[2]/td/div/div/table/tbody/tr[2]/td/table/tbody/tr[3]/td/div[3]/div/div/table/tbody/tr[1]/td/table/tbody/tr/td/div/table/tbody[1]/tr[2]/td[2]/div/div[2]/table/tbody/tr[' + str(i + 1) + ']/td[1]/div/span/span'
+        else:
+            url ='/html/body/table/tbody/tr/td/div/div[1]/table/tbody/tr[2]/td/table/tbody/tr/td/div/div[1]/table/tbody/tr[5]/td/div/table/tbody/tr/td/table/tbody/tr[2]/td/div/div/table/tbody/tr[2]/td/table/tbody/tr[3]/td/div[3]/div/div/table/tbody/tr[1]/td/table/tbody/tr/td/div/table/tbody[1]/tr[2]/td[2]/div/div[2]/table/tbody/tr/td[1]/div/span/span'
+        asVendorInput = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, url)))
+        asVendorInput.click()
 
-    time.sleep(2)
-    if (i != 0):
-        url = '/html/body/table/tbody/tr/td/div/div[1]/table/tbody/tr[2]/td/table/tbody/tr/td/div/div[1]/table/tbody/tr[5]/td/div/table/tbody/tr/td/table/tbody/tr[2]/td/div/div/table/tbody/tr[2]/td/table/tbody/tr[3]/td/div[3]/div/div/table/tbody/tr[1]/td/table/tbody/tr/td/div/table/tbody[1]/tr[2]/td[2]/div/div[2]/table/tbody/tr[' + str(i + 1) + ']/td[1]/div/span/input'
-    else:
-        url = '/html/body/table/tbody/tr/td/div/div[1]/table/tbody/tr[2]/td/table/tbody/tr/td/div/div[1]/table/tbody/tr[5]/td/div/table/tbody/tr/td/table/tbody/tr[2]/td/div/div/table/tbody/tr[2]/td/table/tbody/tr[3]/td/div[3]/div/div/table/tbody/tr[1]/td/table/tbody/tr/td/div/table/tbody[1]/tr[2]/td[2]/div/div[2]/table/tbody/tr/td[1]/div/span/input'
-
-
-    asVendorInput = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, url)))
-    asVendorInput.click()
-
-    asVendorInput.send_keys(asVendorValue)
-    asVendorInput.send_keys(Keys.RETURN)
-    time.sleep(5)
+        time.sleep(2)
+        if (i != 0):
+            url = '/html/body/table/tbody/tr/td/div/div[1]/table/tbody/tr[2]/td/table/tbody/tr/td/div/div[1]/table/tbody/tr[5]/td/div/table/tbody/tr/td/table/tbody/tr[2]/td/div/div/table/tbody/tr[2]/td/table/tbody/tr[3]/td/div[3]/div/div/table/tbody/tr[1]/td/table/tbody/tr/td/div/table/tbody[1]/tr[2]/td[2]/div/div[2]/table/tbody/tr[' + str(i + 1) + ']/td[1]/div/span/input'
+        else:
+            url = '/html/body/table/tbody/tr/td/div/div[1]/table/tbody/tr[2]/td/table/tbody/tr/td/div/div[1]/table/tbody/tr[5]/td/div/table/tbody/tr/td/table/tbody/tr[2]/td/div/div/table/tbody/tr[2]/td/table/tbody/tr[3]/td/div[3]/div/div/table/tbody/tr[1]/td/table/tbody/tr/td/div/table/tbody[1]/tr[2]/td[2]/div/div[2]/table/tbody/tr/td[1]/div/span/input'
 
 
+        asVendorInput = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, url)))
+        asVendorInput.click()
+
+        asVendorInput.send_keys(asVendorValue)
+        asVendorInput.send_keys(Keys.RETURN)
+        time.sleep(5)
 
 
-#Country Origin
-time.sleep(5)
-countryOfOrigin = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, '/html/body/table/tbody/tr/td/div/div[1]/table/tbody/tr[2]/td/table/tbody/tr/td/div/div[1]/table/tbody/tr[5]/td/div/table/tbody/tr/td/table/tbody/tr[2]/td/div/div/table/tbody/tr[2]/td/table/tbody/tr[3]/td/div[3]/div/div/table/tbody/tr[2]/td/table/tbody/tr[1]/td[3]/table/tbody/tr/td[1]/input')))
-countryOfOrigin.click()
-countryOfOrigin.click()
-countryOfOriginValue = str(asVendorDic[templateData['AsVendor']])[:2]
-print(countryOfOriginValue)
-countryOfOrigin.send_keys(countryOfOriginValue)
-countryOfOrigin.send_keys(Keys.RETURN)
+        countryOfOrigin = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH,
+                                                                                          '/html/body/table/tbody/tr/td/div/div[1]/table/tbody/tr[2]/td/table/tbody/tr/td/div/div[1]/table/tbody/tr[5]/td/div/table/tbody/tr/td/table/tbody/tr[2]/td/div/div/table/tbody/tr[2]/td/table/tbody/tr[3]/td/div[3]/div/div/table/tbody/tr[2]/td/table/tbody/tr[1]/td[3]/table/tbody/tr/td[1]/input')))
+        countryOfOrigin.click()
+        countryOfOrigin.click()
+        countryOfOriginValue = str(asVendorDic[templateData['AsVendor']])[:2]
+        countryOfOrigin.clear()
+        countryOfOrigin.send_keys(countryOfOriginValue)
+        countryOfOrigin.send_keys(Keys.RETURN)
+
+
 
 
 #Additional Data
@@ -465,3 +527,5 @@ else:
     noPromotional.click()
 
 exit(0)
+
+
