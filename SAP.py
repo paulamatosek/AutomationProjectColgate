@@ -30,94 +30,34 @@ baseUnitOfMeasureDic = {'1/2 Pallet' : 'HPL',
                         'Piece': 'PC',
                         '1/8 Pallet': 'CA'}
 SKUTypeDic = {
-         'regular' : 'T1',
-         'promotional' : 'T2',
-         'industrial' : 'T3',
-         'commercial': 'T4',
-         'mto/unique pallets' : 'T7',
-        'co-packing input': 'T8',
+         'r' : 'T1',
+         'p' : 'T2',
+         'i' : 'T3',
+         'co': 'T4',
+         'mto' : 'T7',
+        'co-pa': 'T8',
         'None': 'T1'}
 
-asVendorDic= {
-    'NL52 - KUEHNE&NAGEL NL': 'NL52',
-    'NL52':'NL52',
-    'PL50 - FM Olszowa' :   'PL50',
-    'RO50 - K&N' :   'RO50',
-    'DE51 - Druck + Pack' :   'DE51',
-    'CH50 - Planzer' :   'CH50',
-    'FR57 - FM Crépy' :   'FR57',
-    'DK50 - Frode Laursen' :   'DK50',
-    'GB50 - DHL' :   'GB50',
-    'GR20 - Diakinisis' :   'GR20',
-    'ID logisitics' :   'ES50',
-    'PL20 - Sonoco' : 'PL20',
-    'FRG6 - ALLOGA' :'FRG6',
-    'FRG5 - RAFFIN' :'FRG5',
-    'ES50-Logiters' :'ES50',
-    'ES50 - POLO' : 'ES50',
-
+asVendorDic= {....
+    
 }
 
-dataDic= {
-    'PL79': 'PL20',
-    'PL78': 'PL20',
-    'CZ99': 'PL50',
-    'HU99': 'PL50',
-    'PL99': 'PL50',
-    'SK98': 'PL50',
-    'RO99': 'RO50',
-    'AT99': 'DE51',
-    'DE99': 'DE51',
-    'CH99': 'CH50',
-    'BE99': 'NL52',
-    'NL99': 'NL52',
-    'FR99': 'FR57',
-    'DK99': 'DK50',
-    'FI99': 'DK50',
-    'NO99': 'DK50',
-    'SE99': 'DK50',
-    'GB99': 'GB50',
-    'GR99': 'GR20',
-    'IT99': 'IT50',
-    'PT99': 'ES50',
-    'ES99': 'ES50'
+dataDic= {...
+    
 }
 
 
 languagesDic = {
     'BE99' : ['French', 'Dutch','German'],
-    'PL78' : ['Polish'],
-    'PL79' : ['Polish'],
-    'PL99' : ['Polish'],
-    'NL99' : ['Dutch'],
-    'CZ99' : ['Czech'],
-    'RO99' : ['Romanian'],
-    'AT99' : ['German'],
-    'DE99' : ['German'],
-    'CH99' : ['German', 'Italian','French'],
-    'FR99' : ['French'],
-    'DK99' : ['Danish'],
-    'FI99' : ['Finnish'],
-    'NO99' : ['Norwegian'],
-    'SE99' : ['Swedish'],
-    'GR99' : ['Greek'],
-    'IT99' : ['Italian'],
-    'PT99' : ['Portuguese'],
-    'ES99' : ['Spanish'],
-    'GB99' : ['English_ZA']
+    
 }
 
-InnovationDic={
-'NO' : ['NO - Base Business'],
-'H1' : ['H1 - Core Innovation'],
-'H1R' : ['H1R - Core Relaunch'],
-'H2' : ['H2 - Novel'],
-'H3' : ['H3 - Breakthrough'],
-'GEO' : ['GEO - Geographic Expansion']
+InnovationDic={...
+
 
 }
 
-sapUrl = 'http://appportal.win.colpal.com/irj/portal?NavigationTarget=navurl://551876c535632da41f46ac6ddd9ccb22'
+sapUrl = 'x'
 
 sessionFile = open("sessionIdAndProduct.txt", "r")
 sessionAndExecutorUrl = sessionFile.read().splitlines()
@@ -146,12 +86,9 @@ for window in driver.window_handles:
     driver.switch_to.window(window)
     if 'Bing' in driver.title:
         break
-# print(driver.current_window_handle)
 driver.get(sapUrl)
-# print('attached')
-# print(driver.current_window_handle)
 
-# print(driver.window_handles)
+
 workbook = load_workbook(filename="ProjectData.xlsx")
 sheet1 = workbook.active
 templateData = {
@@ -178,8 +115,6 @@ time.sleep(5)
 materialRequests = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "L2N6")))
 materialRequests.click()
 time.sleep(5)
-
-
 
 processMaterial = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "6L3N0")))
 processMaterial.click()
@@ -332,7 +267,6 @@ for i, salesOrgValue in enumerate(salesOrgValues):
          PPGValue= ''
 
     if PPGValue != '':
-
         materialGroup4 = WebDriverWait(driver, 10).until((EC.presence_of_element_located((By.XPATH, '/html/body/table/tbody/tr/td/div/div[1]/table/tbody/tr[2]/td/table/tbody/tr/td/div/div[1]/table/tbody/tr[5]/td/div/table/tbody/tr/td/table/tbody/tr[2]/td/div/div/table/tbody/tr[2]/td/table/tbody/tr[3]/td/div[2]/div/div/table/tbody/tr[2]/td/table/tbody/tr[5]/td[2]/div/table/tbody/tr[5]/td[3]/table/tbody/tr/td[2]/span'))))
         materialGroup4.click()
         time.sleep(2)
@@ -445,21 +379,18 @@ else:
 time.sleep(3)
 additionalData = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, '/html/body/table/tbody/tr/td/div/div[1]/table/tbody/tr[2]/td/table/tbody/tr/td/div/div[1]/table/tbody/tr[6]/td/div/table/tbody/tr/td/table/tbody/tr[1]/td/table/tbody/tr/td/div/div/span[1]')))
 additionalData.click()
-
 additionalDataDesc = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, '/html/body/table/tbody/tr/td/div/div[1]/table/tbody/tr[2]/td/table/tbody/tr/td/div/div[1]/table/tbody/tr[6]/td/div/table/tbody/tr/td/table/tbody/tr[2]/td/div/div/table/tbody/tr[2]/td/table/tbody/tr[3]/td/div[1]/div/div/table/tbody/tr/td/div/table/tbody[1]/tr[2]/td[2]/div/div[2]/table/tbody/tr/td[2]/div/span/span')))
 additionalDataDesc.click()
 additionalDataDesc = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, '/html/body/table/tbody/tr/td/div/div[1]/table/tbody/tr[2]/td/table/tbody/tr/td/div/div[1]/table/tbody/tr[6]/td/div/table/tbody/tr/td/table/tbody/tr[2]/td/div/div/table/tbody/tr[2]/td/table/tbody/tr[3]/td/div[1]/div/div/table/tbody/tr/td/div/table/tbody[1]/tr[2]/td[2]/div/div[2]/table/tbody/tr/td[2]/div/span/input')))
 additionalDataDesc.click()
 additionalDataDesc.send_keys(str(templateData["MatDesc"]).strip())
 additionalDataDesc.send_keys(Keys.RETURN)
-
 time.sleep(1)
 
 
 
 addRow = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH,
                                                                              '/html/body/table/tbody/tr/td/div/div[1]/table/tbody/tr[2]/td/table/tbody/tr/td/div/div[1]/table/tbody/tr[6]/td/div/table/tbody/tr/td/table/tbody/tr[2]/td/div/div/table/tbody/tr[2]/td/table/tbody/tr[3]/td/div[1]/div/div/table/tbody/tr/td/div/table/thead/tr/th/table/tbody/tr/td/span[1]/div')))
-print(salesOrgValues)
 
 uniqueLanguages = set()
 
