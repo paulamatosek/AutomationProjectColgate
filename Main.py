@@ -10,9 +10,9 @@ from bs4 import BeautifulSoup
 
 
 
-popBoxLoginUrl = 'https://popbox-global.diadeis.com/Mediabox-Independence/?MBI_datasource=POPBOX-GLOBAL'
-ourColgateUrl = 'https://ourcolgate.com/ourcolgate/all-tools'
-popBoxProductUrl = 'https://popbox-global.diadeis.com/Mediabox-Independence/Base/ExecAction?action=VoirRef&IDSession=MBI!POPBOX-GLOBAL!7AXRW32OFA5BXIZD5L30RKZWPVHA5MSNIO6CAW48&num=C3KOZX6HQP&id_ref=12321'
+popBoxLoginUrl = 'z'
+ourColgateUrl = 'y'
+popBoxProductUrl = 'x'
 
 
 def attach_to_session(executor_url, session_id):
@@ -47,10 +47,3 @@ def getSession():
 
 driver = getSession()
 
-# username = driver.find_element_by_id("MDB_WebUserCode")
-# password = driver.find_element_by_name("MDB_WebUserPwd")
-# username.send_keys("pmatosek")
-# password.send_keys("Interia12345&")
-# login_form = driver.find_element_by_class_name("login-form")
-# login_button = login_form.find_element_by_class_name("btn")
-# login_button.click()
